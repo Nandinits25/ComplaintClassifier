@@ -1,0 +1,17 @@
+{
+    "max_length": 150,
+    "max_words": 20000,
+    "categories": [
+        "Checking or savings account",
+        "Credit card",
+        "Credit card or prepaid card",
+        "Credit reporting or other personal consumer reports",
+        "Credit reporting, credit repair services, or other personal consumer reports",
+        "Debt collection",
+        "Mortgage",
+        "Payday loan, title loan, or personal loan",
+        "Student loan",
+        "Vehicle loan or lease"
+    ],
+    "test_accuracy": 0.8133333333333334
+}
