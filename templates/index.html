@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ComplaintClassifier | AI Complaint Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">CC</div><div><strong>Complaint<span>Classifier</span></strong><small>AI SUPPORT INTELLIGENCE</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active" href="/"><span class="nav-icon">⌂</span> Complaint analysis</a>
+      <div class="side-note">
+        <div class="note-icon">✦</div>
+        <strong>Smart classification</strong>
+        <p>Turn customer feedback into structured insights with an LSTM text classifier.</p>
+      </div>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Local demo environment</div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div><div class="eyebrow">CUSTOMER EXPERIENCE / AI TOOL</div><h1>Complaint analysis</h1></div>
+        <div class="top-pill"><span class="pulse"></span> Classification workspace</div>
+      </header>
+
+      <section class="welcome">
+        <div class="welcome-copy">
+          <div class="tag">LSTM-POWERED TEXT ANALYSIS</div>
+          <h2>Understand the issue.<br><span>Find the right category.</span></h2>
+          <p>Enter a customer complaint to classify it into a supported category. The trained model helps make complaint review faster and more consistent.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="art-card"><span class="art-spark">✦</span><div class="art-line long"></div><div class="art-line"></div><div class="art-result"><span>✓</span> Category identified</div></div>
+          <div class="art-bubble bubble-one">Aa</div><div class="art-bubble bubble-two">↗</div>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="panel input-panel">
+          <div class="panel-heading"><div><span class="step-number">01</span><h3>Complaint details</h3></div><span class="subtle">Required</span></div>
+          <label for="complaint">Customer complaint</label>
+          <p class="field-hint">Describe the customer's problem in their own words.</p>
+          <textarea id="complaint" maxlength="5000" placeholder="Example: I was charged twice for the same transaction and have not received a refund..." aria-describedby="char-count"></textarea>
+          <div class="textarea-footer"><span id="char-count">0 / 5000 characters</span><span>✦ Clear details improve context</span></div>
+          <div class="examples"><span class="examples-title">TRY AN EXAMPLE</span>
+            <button type="button" class="example-chip" data-example="I noticed an unauthorized charge on my account and need help resolving it.">Unauthorized charge <span>↗</span></button>
+            <button type="button" class="example-chip" data-example="My loan payment was processed, but my account still shows an overdue balance.">Loan payment issue <span>↗</span></button>
+            <button type="button" class="example-chip" data-example="I have contacted customer service several times but my billing dispute has not been resolved.">Billing dispute <span>↗</span></button>
+          </div>
+          <div class="form-error" id="form-error" role="alert"></div>
+          <button id="classify-btn" class="primary-btn" type="button"><span>Classify complaint</span><span class="btn-arrow">→</span></button>
+          <p class="privacy-note"><span>▣</span> Demo note: avoid entering personal, account, or payment details.</p>
+        </div>
+
+        <div class="panel result-panel" id="result-panel">
+          <div class="panel-heading"><div><span class="step-number">02</span><h3>Classification result</h3></div><span class="live-badge"><span></span> MODEL OUTPUT</span></div>
+          <div id="empty-state" class="empty-state">
+            <div class="empty-illustration"><div class="doc-icon"><span></span><span></span><span></span></div><div class="magnifier">⌕</div></div>
+            <h4>Your results will appear here</h4>
+            <p>Submit a complaint to see the predicted category and model confidence.</p>
+            <div class="empty-steps"><div><span>1</span> Enter complaint</div><div><span>2</span> Run classifier</div><div><span>3</span> Review result</div></div>
+          </div>
+          <div id="loading-state" class="loading-state" hidden><div class="loader"></div><h4>Analyzing complaint</h4><p>The LSTM model is processing the text…</p></div>
+          <div id="result-state" class="result-state" hidden>
+            <div class="result-label">PREDICTED CATEGORY</div>
+            <div class="prediction-category"><div class="category-icon">✓</div><div><h2 id="predicted-category">—</h2><p>Predicted by the trained LSTM model</p></div></div>
+            <div class="confidence-row"><span>Model confidence</span><strong id="confidence-text">—</strong></div>
+            <div class="progress-track"><div id="confidence-bar" class="progress-fill"></div></div>
+            <div class="probability-heading"><h4>Category probabilities</h4><span>Model output</span></div>
+            <div id="probabilities" class="probabilities"></div>
+            <div class="result-disclaimer">Confidence is a model estimate, not a guarantee. Review important cases manually.</div>
+          </div>
+          <div id="unavailable-state" class="unavailable-state" hidden>
+            <div class="unavailable-icon">!</div><h4>Model not ready</h4>
+            <p id="unavailable-message">The trained model is not available yet. Train the model before making predictions.</p>
+          </div>
+        </div>
+      </section>
+      <footer><span>ComplaintClassifier <span class="footer-dot">•</span> Academic project demonstration</span><span>Powered by an LSTM text classifier</span></footer>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
